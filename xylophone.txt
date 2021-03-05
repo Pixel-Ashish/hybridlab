@@ -1,0 +1,67 @@
+import 'dart:math';
+
+import 'package:audioplayers/audio_cache.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  void audioPlayer(int i){
+    var player = AudioCache();
+    player.play('note$i.wav');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: SafeArea(
+        child: Scaffold(
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: 
+              FlatButton(onPressed: () {
+                  audioPlayer(1);
+                }, color: Colors.red,),
+              ),
+              FlatButton(onPressed: () {
+                audioPlayer(2);
+              }, color: Colors.blueAccent,),
+
+              FlatButton(onPressed: () {
+                audioPlayer(3);
+              }, color: Colors.black,),
+
+              Expanded(
+                child: FlatButton(onPressed: () {
+                  audioPlayer(4);
+                }, color: Colors.grey,),
+              ),
+
+              FlatButton(onPressed: () {
+                audioPlayer(5);
+              }, color: Colors.pink,),
+
+              FlatButton(onPressed: () {
+                audioPlayer(6);
+              }, color: Colors.brown,),
+
+              FlatButton(onPressed: () {
+                audioPlayer(7);
+              }, color: Colors.green,),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

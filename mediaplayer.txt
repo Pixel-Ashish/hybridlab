@@ -1,0 +1,66 @@
+package com.example.practisemultimedia;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button play,pause,stop,rewind,forward;
+    MediaPlayer mplayer;
+    int fTime = 5000;
+    int bTime = 5000;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        play = findViewById(R.id.play);
+        pause = findViewById(R.id.pause);
+        rewind = findViewById(R.id.rewind);
+        forward = findViewById(R.id.forward);
+        stop = findViewById(R.id.stop);
+        mplayer=MediaPlayer.create(getApplicationContext(),R.raw.music);
+
+
+        play.setOnClickListener((v)->
+        {
+            mplayer.start();
+        });
+        pause.setOnClickListener((v)->
+        {
+            mplayer.pause();
+        });
+        stop.setOnClickListener((v)->
+        {
+            mplayer.stop();
+        });
+
+        forward.setOnClickListener((v) ->{
+            if (mplayer != null){
+                int currentPosition = mplayer.getCurrentPosition();
+                if(currentPosition + fTime <= mplayer.getDuration()){
+                    mplayer.seekTo(currentPosition + fTime);
+                }else { mplayer.seekTo(mplayer.getDuration());
+                }
+            }
+        });
+
+        rewind.setOnClickListener((v) ->{
+            if (mplayer != null){
+                int currentPosition = mplayer.getCurrentPosition();
+                if(currentPosition - bTime >= 0){
+                    mplayer.seekTo(currentPosition - bTime);
+                }else {
+                    mplayer.seekTo(0);
+                }
+            }
+        });
+
+
+
+    }
+}

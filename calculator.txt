@@ -1,0 +1,154 @@
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText result;
+    Button one, two, three, four, five, six, seven, eight, nine, zero, plus,minus, mult,  div, equal, dot, clear;
+
+    float value1,value2;
+    boolean Multiply,Addition,Substraction,Divide;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        result = findViewById(R.id.result);
+
+        one = findViewById(R.id.one);
+        two = findViewById(R.id.two);
+        three = findViewById(R.id.three);
+        four = findViewById(R.id.four);
+        five = findViewById(R.id.five);
+        six = findViewById(R.id.six);
+        seven = findViewById(R.id.seven);
+        eight = findViewById(R.id.eight);
+        nine = findViewById(R.id.nine);
+        zero = findViewById(R.id.zero);
+        plus = findViewById(R.id.plus);
+        minus = findViewById(R.id.sub);
+        mult = findViewById(R.id.mul);
+        div = findViewById(R.id.div);
+        equal = findViewById(R.id.equal);
+        dot = findViewById(R.id.dot);
+        clear = findViewById(R.id.clear);
+
+        one.setOnClickListener((v)-> {
+            result.setText(result.getText()+"1");
+        });
+
+
+
+        minus.setOnClickListener((v)-> {
+            result.setText(result.getText()+"-");
+        });
+        div.setOnClickListener((v)-> {
+            result.setText(result.getText()+"/");
+        });
+        mult.setOnClickListener((v)-> {
+            result.setText(result.getText()+"*");
+        });two.setOnClickListener((v)-> {
+            result.setText(result.getText()+"2");
+        });
+
+        three.setOnClickListener((v)-> {
+            result.setText(result.getText()+"3");
+        });
+
+        four.setOnClickListener((v)-> {
+            result.setText(result.getText()+"4");
+        });
+
+
+        five.setOnClickListener((v)-> {
+            result.setText(result.getText()+"5");
+        });
+
+        six.setOnClickListener((v)-> {
+            result.setText(result.getText()+"6");
+        });
+
+        seven.setOnClickListener((v)-> {
+            result.setText(result.getText()+"7");
+        });
+
+        eight.setOnClickListener((v)-> {
+            result.setText(result.getText()+"8");
+        });
+        nine.setOnClickListener((v)-> {
+            result.setText(result.getText()+"9");
+        });
+
+        zero.setOnClickListener((v)-> {
+            result.setText(result.getText()+"0");
+        });
+
+        plus.setOnClickListener((v)-> {
+            result.setText(result.getText()+"+");
+        });
+
+
+        plus.setOnClickListener((v)->{
+            if(result == null){
+                result.setText(" ");
+            }else {
+                value1 = Float.parseFloat(result.getText() + " ");
+                Addition = true;
+                result.setText(null);
+            }
+        });
+
+        minus.setOnClickListener((v)->{
+                value1 = Float.parseFloat(result.getText() + " ");
+                Substraction = true;
+                result.setText(null);
+        });
+        div.setOnClickListener((v)->{
+                value1 = Float.parseFloat(result.getText() + " ");
+                Divide = true;
+                result.setText(null);
+        });
+        mult.setOnClickListener((v)->{
+                value1 = Float.parseFloat(result.getText() + " ");
+                Multiply = true;
+                result.setText(null);
+        });
+
+
+        equal.setOnClickListener((v) -> {
+            value2 = Float.parseFloat(result.getText()+ " ");
+
+            if(Addition == true){
+                result.setText(value1+value2 + " ");
+                Addition = false;
+            }
+
+            if(Substraction == true){
+                result.setText(value1-value2 + " ");
+                Substraction = false;
+            }
+
+            if(Multiply == true){
+                result.setText(value1*value2 + " ");
+                Multiply = false;
+            }
+
+            if(Divide == true){
+                result.setText(value1/value2 + " ");
+                Divide = false;
+            }
+        });
+
+        clear.setOnClickListener((v) -> {
+            result.setText(" ");
+        });
+
+    }
+}
